@@ -120,11 +120,11 @@ void RMSerialDriver::receiveData()
             resetTracker();
           }
 
-          std::cout<<"detect_color:"<<(int)packet.detect_color<<std::endl;
-          std::cout<<"auto_outpost_status:"<<(int)packet.auto_outpost_status<<std::endl;
-          std::cout<<"pitch:"<<(float)packet.pitch<<std::endl;
-          std::cout<<"yaw:"<<(float)packet.yaw<<std::endl;
-          std::cout<<"shot_v:"<<(float)packet.shot_v<<std::endl;
+          // std::cout<<"detect_color:"<<(int)packet.detect_color<<std::endl;
+          // std::cout<<"auto_outpost_status:"<<(int)packet.auto_outpost_status<<std::endl;
+          // std::cout<<"pitch:"<<(float)packet.pitch<<std::endl;
+          // std::cout<<"yaw:"<<(float)packet.yaw<<std::endl;
+          // std::cout<<"shot_v:"<<(float)packet.shot_v<<std::endl;
           
           auto_aim_interfaces::msg::OutposeReceive serial_data;
           serial_data.pitch = packet.pitch;
@@ -150,10 +150,10 @@ void RMSerialDriver::receiveData()
             marker_pub_->publish(aiming_point_);
           }
         } else {
-          RCLCPP_ERROR(get_logger(), "CRC error!");
+          //RCLCPP_ERROR(get_logger(), "CRC error!");
         }
       } else {
-        RCLCPP_WARN_THROTTLE(get_logger(), *get_clock(), 20, "Invalid header: %02X", header[0]);
+        //RCLCPP_WARN_THROTTLE(get_logger(), *get_clock(), 20, "Invalid header: %02X", header[0]);
       }
     } catch (const std::exception & ex) {
       RCLCPP_ERROR_THROTTLE(
